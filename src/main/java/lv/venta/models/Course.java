@@ -22,7 +22,7 @@ public class Course {
     @Column(name="title")
     @NotNull
     @Size(min=3, max=150)
-    @Pattern(regexp ="[A-Z]{1}[a-z]+", message = "1.burtam jabut lielam un tikai latinu burti")
+    @Pattern(regexp ="[A-Z]{1}[a-z\\ ]+", message = "1.burtam jabut lielam un tikai latinu burti")
     private String title;
 
     @Column(name="creditPoints")

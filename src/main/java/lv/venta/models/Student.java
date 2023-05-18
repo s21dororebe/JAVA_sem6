@@ -22,13 +22,13 @@ public class Student {
     @Column(name="name")
     @NotNull
     @Size(min=3, max=20)
-    @Pattern(regexp ="[A-Z]{1}[a-z]+", message = "1.burtam jabut lielam un tikai latinu burti")
+    @Pattern(regexp ="[A-Z]{1}[a-z\\ ]+", message = "1.burtam jabut lielam un tikai latinu burti")
     private String name;
 
     @Column(name="surname")
     @NotNull
     @Size(min=3, max=20)
-    @Pattern(regexp ="[A-Z]{1}[a-z]+", message = "1.burtam jabut lielam un tikai latinu burti")
+    @Pattern(regexp ="[A-Z]{1}[a-z\\ ]+", message = "1.burtam jabut lielam un tikai latinu burti")
     private String surname;
 
     @OneToMany(mappedBy="student")
