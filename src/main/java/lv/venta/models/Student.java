@@ -32,6 +32,7 @@ public class Student {
     private String surname;
 
     @OneToMany(mappedBy="student")
+    @ToString.Exclude
     private Collection<Grade> grades;
 
     public Student(@NotNull @Size(min = 3, max = 20) @Pattern(regexp = "[A-Z]{1}[a-z]+") String name,
