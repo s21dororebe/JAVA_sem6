@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
+import java.util.Collection;
+
 @Table (name = "student_table")
 @Entity
 @Getter
@@ -29,7 +31,11 @@ public class Student {
     @Pattern(regexp ="[A-Z]{1}[a-z]+", message = "1.burtam jabut lielam un tikai latinu burti")
     private String surname;
 
-    public Student(String name, String surname) {
+    @OneToMany(mappedBy="student")
+    private Collection<Grade> grades;
+
+    public Student(@NotNull @Size(min = 3, max = 20) @Pattern(regexp = "[A-Z]{1}[a-z]+") String name,
+                   @NotNull @Size(min = 3, max = 20) @Pattern(regexp = "[A-Z]{1}[a-z]+") String surname) {
         this.name = name;
         this.surname = surname;
     }

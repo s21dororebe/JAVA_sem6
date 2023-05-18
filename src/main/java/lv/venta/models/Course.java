@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
+import java.util.Collection;
+
 @Table (name = "course_table")
 @Entity
 @Getter
@@ -28,5 +30,16 @@ public class Course {
     @Max(20)
     private int creditPoints;
 
-    //TODO add constuctor
+    @OneToOne
+    @JoinColumn(name="Idp") //profesora id
+    private Professor professor;
+
+    @OneToMany(mappedBy="course")
+    private Collection<Grade> grades;
+
+    public Course(String title, int creditPoints, Professor professor) {
+        this.title = title;
+        this.creditPoints = creditPoints;
+        this.professor = professor;
+    }
 }

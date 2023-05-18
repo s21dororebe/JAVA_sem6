@@ -22,7 +22,17 @@ public class Grade {
     @Max(10)
     private int gvalue;
 
-//    private Student student;
+    @ManyToOne
+    @JoinColumn(name="Ids")
+    private Student student;
 
-    //TODO add constructor
+    @ManyToOne
+    @JoinColumn(name="Idc")
+    private Course course;
+
+    public Grade(int gvalue, Student student, Course course) {
+        this.gvalue = gvalue;
+        this.student = student;
+        this.course = course;
+    }
 }
