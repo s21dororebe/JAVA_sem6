@@ -1,4 +1,4 @@
-package lv.venta.models;
+package lv.venta.java_sem6.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;

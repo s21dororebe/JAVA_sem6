@@ -1,10 +1,9 @@
-package lv.venta.models;
+package lv.venta.java_sem6.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 @Table (name = "professor_table")
@@ -36,8 +35,7 @@ public class Professor {
     @NotNull
     private Degree degree;
 
-    @ManyToMany
-    @JoinTable(name = "prof_course_table", joinColumns = @JoinColumn(name = "Idc"), inverseJoinColumns = @JoinColumn(name = "Idp"))
+    @ManyToMany(mappedBy = "professors")
     @ToString.Exclude
     private Collection<Course> courses;
 
