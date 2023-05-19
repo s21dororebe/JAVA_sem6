@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 @Table (name = "professor_table")
 @Entity
 @Getter
@@ -33,9 +36,10 @@ public class Professor {
     @NotNull
     private Degree degree;
 
-    @OneToOne(mappedBy="professor") //variable
+    @ManyToMany
+    @JoinTable(name = "prof_course_table", joinColumns = @JoinColumn(name = "Idc"), inverseJoinColumns = @JoinColumn(name = "Idp"))
     @ToString.Exclude
-    private Course course;
+    private Collection<Course> courses;
 
     public Professor(String name, String surname, Degree degree) {
         this.name = name;
