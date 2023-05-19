@@ -13,10 +13,10 @@ public interface IFilteringService {
     ArrayList<Professor> retrieveAllProfessors();
     ArrayList<Course> retrieveAllCourses();
 
-    ArrayList<Grade> retrieveAllGradesByStudentId(long id);
+    ArrayList<Grade> retrieveAllGradesByStudentId(long id) throws Exception;
 
-    ArrayList<Course> retrieveAllCoursesByStudentId(long id);
-    ArrayList<Course> retrieveAllCoursesByProfessorId(long id);
+    ArrayList<Course> retrieveAllCoursesByStudentId(long id) throws Exception;
+    ArrayList<Course> retrieveAllCoursesByProfessorId(long id) throws Exception;
 
-    float calculateAVGGradeInCoursesId(long id);
+    float calculateAVGGradeInCoursesId(long id) throws Exception;
 }

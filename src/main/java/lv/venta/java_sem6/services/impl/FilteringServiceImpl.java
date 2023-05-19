@@ -38,12 +38,31 @@ public class FilteringServiceImpl implements IFilteringService {
         return (ArrayList<Course>) courseRepo.findAll();
     }
 
-    public ArrayList<Grade> retrieveAllGradesByStudentId(long id){
-        for()
+    public ArrayList<Grade> retrieveAllGradesByStudentId(long id) throws Exception {
+        if(id > 0){
+            return gradeRepo.findByStudentIds(id);
+        } else throw new Exception("Incorrect id");
     }
 
-    public ArrayList<Course> retrieveAllCoursesByStudentId(long id){}
-    public ArrayList<Course> retrieveAllCoursesByProfessorId(long id){}
+    public ArrayList<Course> retrieveAllCoursesByStudentId(long id) throws Exception {
+        if(id > 0){
+            return courseRepo.findByGradesStudentIds(id);
+        } else throw new Exception("Incorrect id");
+    }
+    public ArrayList<Course> retrieveAllCoursesByProfessorId(long id) throws Exception {
+        if(id > 0){
+            return courseRepo.findAllByProfessorsIdp(id);
+        } else throw new Exception("Incorrect id");
+    }
 
-    public float calculateAVGGradeInCoursesId(long id){}
+    public float calculateAVGGradeInCoursesId(long id) throws Exception {
+        if(id > 0){
+            ArrayList<Grade> filteredResults = gradeRepo.findByCourseIdc(id);
+            float summa = 0;
+            for(Grade temp : filteredResults){
+                summa += temp.getGvalue();
+            }
+            return summa/filteredResults.size();
+        } else throw new Exception("Incorrect id");
+    }
 }
