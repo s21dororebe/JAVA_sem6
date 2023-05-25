@@ -1,7 +1,6 @@
 package lv.venta.java_sem6.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.util.Collection;
