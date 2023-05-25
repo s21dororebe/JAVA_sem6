@@ -34,4 +34,31 @@ public class FilterController {
         model.addAttribute("grades", filteringService.retrieveAllGrades());
         return "all-grades-page"; //all-students-page.html
     }
+
+    /*@GetMapping(value = "/filter//filterGradesByStudent") and
+@PostMapping(value = "/filter/filterGradesByStudent) - define student name
+and surname in html and get all grades for defined student, using Service
+function selectGradesByStudent()*/
+
+    @GetMapping("/info/showAllGrades/students/{id}") //localhost:8080/info/showAllGrades/students/{id}
+    public String getAllGradesByStudentId(@PathVariable(name="id") long id, Model model) throws Exception {
+        try {
+            model.addAttribute("grades", filteringService.retrieveAllGradesByStudentId(id));
+            return "all-grades-page";
+        } catch (Exception e){
+            model.addAttribute("msg", e.getMessage());
+            return "error-page";
+        }
+    }
+
+    @GetMapping("/info/showAllCourses/students") //localhost:8080/info/showAllCourses/students?id=2
+    public String getAllCoursesByStudentId(@RequestParam(name="id") long id, Model model) throws Exception {
+        try {
+            model.addAttribute("courses", filteringService.retrieveAllCoursesByStudentId(id));
+            return "all-courses-page";
+        } catch (Exception e){
+            model.addAttribute("msg", e.getMessage());
+            return "error-page";
+        }
+    }
 }
