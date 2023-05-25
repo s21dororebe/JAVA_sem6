@@ -40,13 +40,13 @@ public class FilteringServiceImpl implements IFilteringService {
 
     public ArrayList<Grade> retrieveAllGradesByStudentId(long id) throws Exception {
         if(id > 0){
-            return gradeRepo.findByStudentIds(id);
+            return gradeRepo.findByStudentIdp(id);
         } else throw new Exception("Incorrect id");
     }
 
     public ArrayList<Course> retrieveAllCoursesByStudentId(long id) throws Exception {
         if(id > 0){
-            return courseRepo.findByGradesStudentIds(id);
+            return courseRepo.findByGradesStudentIdp(id);
         } else throw new Exception("Incorrect id");
     }
     public ArrayList<Course> retrieveAllCoursesByProfessorId(long id) throws Exception {
