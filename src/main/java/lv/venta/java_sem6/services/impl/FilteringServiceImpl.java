@@ -57,12 +57,15 @@ public class FilteringServiceImpl implements IFilteringService {
 
     public float calculateAVGGradeInCoursesId(long id) throws Exception {
         if(id > 0){
-            ArrayList<Grade> filteredResults = gradeRepo.findByCourseIdc(id);
+            /*ArrayList<Grade> filteredResults = gradeRepo.findByCourseIdc(id);
             float summa = 0;
             for(Grade temp : filteredResults){
                 summa += temp.getGvalue();
             }
-            return summa/filteredResults.size();
+            return summa/filteredResults.size();*/
+            return gradeRepo.myCalculateAVGGradeByCourseId(id);
         } else throw new Exception("Incorrect id");
     }
+
+
 }

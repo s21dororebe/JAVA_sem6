@@ -31,7 +31,6 @@ public class Professor extends Person{
             courses.add(inputCourse);
         }
     }
-
     public void removeCourse(Course inputCourse){
         courses.remove(inputCourse);
     }
